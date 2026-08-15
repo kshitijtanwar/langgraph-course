@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from langchain.tools import tool
-from langchain_tavily import TavilySearch
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_tavily import TavilySearch
 
 load_dotenv()
 
