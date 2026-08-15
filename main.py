@@ -26,11 +26,21 @@ flow.add_conditional_edges(AGENT_REASON, should_continue, {END: END, ACT: ACT})
 flow.add_edge(ACT, AGENT_REASON)
 
 app = flow.compile()
-app.get_graph().draw_mermaid_png(output_file_path="flow.png")
+# app.get_graph().draw_mermaid_png(output_file_path="flow.png")
 
 
 def main():
-    print("Hello from langgraph-01!")
+    result = app.invoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content="What is the temperature in Leh, Ladakh in Celcius? List it and triple it"
+                )
+            ]
+        }
+    )
+
+    print(result["messages"][LAST].content)
 
 
 if __name__ == "__main__":
